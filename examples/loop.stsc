@@ -1,0 +1,5 @@
+// prints the numbers from 10 to 0
+10 print
+>loop -1 add
+    print
+loop jumpNotZero // until 0 is not on top of the stack, jump to loop
