@@ -18,6 +18,8 @@ class Interpreter:
                 except:
                     print("Invalid input. Please enter only numeric values.")
                     exit(-1)
+            elif cur_instruction == "trace":
+                print(str(self.stack))
             elif cur_instruction == "add":
                 # TODO check that there are at least two elements
                 a, b = self.stack.pop(), self.stack.pop()
