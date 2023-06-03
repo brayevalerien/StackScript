@@ -18,4 +18,4 @@ if __name__ == "__main__":
     code_parser = Parser()
     code_parser.parse(raw_code)
     
-    Interpreter(code_parser.tokens).run()
+    Interpreter(code_parser).run()
