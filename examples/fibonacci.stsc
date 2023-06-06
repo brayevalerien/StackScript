@@ -1,0 +1,9 @@
+1 1
+20 // number of terms to compute (replace by uInput to let the user chose)
+>nextTerm
+    -1 add // decreases term index by 1
+    cycle cycle // put the term index at the bottom of the stack
+    swap reach add // computes next term in the sequence
+    print
+    cycle // restores the term index on top
+nextTerm jumpNotZero // jumps to compute next term if counter is != 0
