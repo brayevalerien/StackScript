@@ -8,6 +8,8 @@ class Interpreter:
     SHOW_INSTRUCTION = "show"
     ADD_INSTRUCTION = "add"
     SUB_INSTRUCTION = "sub"
+    MUL_INSTRUCTION = "mul"
+    DIV_INSTRUCTION = "div"
     JUMP_INSTRUCTION = "jump"
     JUMPZERO_INSTRUCTION = "jumpZero"
     JUMPNOTZERO_INSTRUCTION = "jumpNotZero"
@@ -63,6 +65,35 @@ class Interpreter:
             exit(-1)
         self.stack.append(a - b)
     
+    def stsc_mul(self):
+        if len(self.stack) < 2:
+            print("Cannot mul, the stack has less than one element.")
+            exit(-1)
+        a, b = self.stack.pop(), self.stack.pop()
+        if isinstance(a, str):
+            print("Cannot mul " + a + " (tag) and " + b + ".")
+            exit(-1)
+        if isinstance(b, str):
+            print("Cannot mul " + a + " and " + b + " (tag).")
+            exit(-1)
+        self.stack.append(a * b)
+    
+    def stsc_div(self):
+        if len(self.stack) < 2:
+            print("Cannot div, the stack has less than one element.")
+            exit(-1)
+        a, b = self.stack.pop(), self.stack.pop()
+        if isinstance(a, str):
+            print("Cannot div " + a + " (tag) and " + b + ".")
+            exit(-1)
+        if isinstance(b, str):
+            print("Cannot div " + a + " and " + b + " (tag).")
+            exit(-1)
+        if b == 0:
+            print("Cannot div by 0.")
+            exit(-1)
+        self.stack.append(a / b)
+    
     def stsc_jump(self, tag):
         if tag in self.tags:
             self.ip = self.tags[tag]
@@ -100,6 +131,8 @@ class Interpreter:
             self.SHOW_INSTRUCTION: self.stsc_show,
             self.ADD_INSTRUCTION: self.stsc_add,
             self.SUB_INSTRUCTION: self.stsc_sub,
+            self.MUL_INSTRUCTION: self.stsc_mul,
+            self.DIV_INSTRUCTION: self.stsc_div,
             self.JUMP_INSTRUCTION: self.stsc_jump,
             self.JUMPZERO_INSTRUCTION: self.stsc_jump_zero,
             self.JUMPNOTZERO_INSTRUCTION: self.stsc_jump_not_zero,
@@ -132,6 +165,10 @@ class Interpreter:
                 instruction_mapping[self.ADD_INSTRUCTION]()
             elif cur_instruction == self.SUB_INSTRUCTION:
                 instruction_mapping[self.SUB_INSTRUCTION]()
+            elif cur_instruction == self.MUL_INSTRUCTION:
+                instruction_mapping[self.MUL_INSTRUCTION]()
+            elif cur_instruction == self.DIV_INSTRUCTION:
+                instruction_mapping[self.DIV_INSTRUCTION]()
                 
             # Tag and jump instructions
             elif len(cur_instruction) > 0 and cur_instruction[0] == ">":

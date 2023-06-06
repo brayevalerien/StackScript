@@ -1,0 +1,4 @@
+27 42 add print // 69
+27 42 sub print // 15
+27 42 mul print // 1134
+27 42 div print // 1.5555555555555556
