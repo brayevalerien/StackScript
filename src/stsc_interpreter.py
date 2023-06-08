@@ -231,7 +231,7 @@ class Interpreter:
                 instruction_mapping[self.DIV_INSTRUCTION]()
                 
             # Tag and jump instructions
-            elif len(cur_instruction) > 0 and cur_instruction[0] == ">":
+            elif len(cur_instruction) > 0 and cur_instruction[0] == ">": # found a new tag definition
                 if len(cur_instruction) < 2:
                     print("tags must have at least one character.")
                     exit(-1)
