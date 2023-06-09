@@ -1,5 +1,5 @@
+![StackScript logo](./logo/stackscript_logo_cropped.png)
 # StackScript
-![StackScript logo](./logo/stackscript_logo.png)
 StackScript is a toy programming language, designed as a personal project to explore stack-based paradigm. This repository contains documentation about the language, a simple StackScript interpreter written in Python. While the language itself is not intended for real world use due to its limitations and inefficiency, it is a great learning tool and provides fun challenges when writing a program using it.<br>
 
 Please note that this language and the provided interpreter are not intended for production use and should be treated purely as an educational and recreational tool. I cannot be held accountable for any mistakes it could lead to.<br>
