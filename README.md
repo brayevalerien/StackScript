@@ -1,6 +1,6 @@
 ![StackScript logo](./logo/stackscript_logo_cropped.png)
 # StackScript
-StackScript is a toy programming language, designed as a personal project to explore stack-based paradigm. This repository contains documentation about the language, a simple StackScript interpreter written in Python. While the language itself is not intended for real world use due to its limitations and inefficiency, it is a great learning tool and provides fun challenges when writing a program using it.<br>
+StackScript is a toy programming language, designed as a personal project to explore stack-based paradigm. This repository contains documentation about the language and a simple StackScript interpreter written in Python. While the language itself is not intended for real world use due to its limitations and inefficiency, it is a great learning tool and provides fun challenges when writing a program using it.<br>
 
 Please note that this language and the provided interpreter are not intended for production use and should be treated purely as an educational and recreational tool. I cannot be held accountable for any mistakes it could lead to.<br>
 
@@ -13,11 +13,18 @@ This document is divided in multiple sections:
     3. Jump Instructions
     4. Stack manipulation instructions
 4. Code examples
+    1. arithmetic.stsc
+    2. loop.stsc
+    3. fibonacci.stsc
 5. How to contribute to the project
+    1. How to add an instruction
+    2. Things you could help with
 
 ## How to install and run StackScript programs
 Clone this repository locally using the command: <br>
 `git clone https://github.com/brayevalerien/StackScript`
+
+Add the path of the directory to your `PYTHONPATH` environnement variable. You can `cd` into the directory you downloaded and run `export PYTHONPATH=$PYTHONPATH:${pwd}`.
 
 Once you have local version installed, run the [./src/stackscript.py](./src/stackscript.py) python script and pass the program file path in argument. For instance, if you want to run the [Fibonacci example](./examples/fibonacci.stsc), run the command:<br>
 `python ./src/stackscript.py ./examples/fibonacci.stsc`
@@ -30,8 +37,8 @@ In StackScript, the stack can only store two types of elements:
 - Floating-point numbers
 - Tags, which are objects that point to instructions in the source code.
 
-As a result, StackScript does not have native support for characters, strings, or more complex data structures like arrays. Moreover, there is not way to define variables of procedures/functions.<br>
-A StackScript program consists of instructions, which can be separated from each other by spaces, tabs, and/or line breaks. These instructions are executed one by one by the interpreter, performing the corresponding operations. To get a better idea of how this works all together, see the examples sections.
+As a result, StackScript does not have native support for characters, strings, or more complex data structures like arrays. Moreover, there is no way to define variables or procedures/functions.<br>
+A StackScript program consists of instructions, which can be separated from each other by spaces, tabs, and/or line breaks. These instructions are executed one by one by the interpreter, performing the corresponding operations. To get a better idea of how this works all together, see the examples section.
 
 ## Instruction set
 ### I/O instructions
@@ -109,13 +116,13 @@ Note that this program is equivalent and very similar to the following C code
         printf("%f\n", i);
     }
 ```
-Both of this codes have a simple way to express:
+Both codes have a simple way to express:
 - a way to initialize the loop counter
 - a condition for the loop to be executed again
 - some code to execute at the end of a loop
 
 ### [fibonacci.stsc](./examples/fibonacci.stsc)
-this program is a bit more complex but it computes the firsts terms of the [Fibonacci sequence](https://en.wikipedia.org/wiki/Fibonacci_sequence). It uses many important concepts of StackScript, including stack manipulation.
+this program is a bit more complex but it computes the first terms of the [Fibonacci sequence](https://en.wikipedia.org/wiki/Fibonacci_sequence). It uses many important concepts of StackScript, including stack manipulation.
 ```
 1 print 1 print
 20
