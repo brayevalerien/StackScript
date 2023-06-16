@@ -67,6 +67,7 @@ Tags are a used by jump instructions. A jump instruction (conditional or not) re
 - `swap`: swaps the top two elements of the stack.
 - `reach`: similar to `dup`, but it duplicates the second-to-top element.
 - `cycle`: cycles the top three elements, bringing the one at the bottom on top.
+- `clear`: removes all elements from the stack
 
 ## Code examples
 All code examples are available at [./examples/](./examples/) for you to run them. Some of them are explained in this section.
