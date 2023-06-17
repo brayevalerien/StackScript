@@ -1,0 +1,13 @@
+// this program takes two user inputs a and b and prints 1.0 is a<b and -1.0 if a>=b
+uInput uInput
+sub -1 mul
+
+aLessThanb jumpNeg
+-1 print // this part is accessed iff a-b>=0 ie a>=b
+end jump
+
+>aLessThanb
+1 print // this part is accessed iff a-b<0 ie a<b
+end jump
+
+>end

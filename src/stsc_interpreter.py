@@ -31,7 +31,7 @@ class Interpreter:
         self.stack = []
         self.instructions = parser.tokens
         self.ip = 0  # instruction pointer
-        self.tags = {}
+        self.tags = parser.tags
         
     def is_number(self, s: str) -> bool:
         return bool(re.match(r'^[-+]?(\d+(\.\d*)?|\.\d+)$', s))
@@ -257,11 +257,8 @@ class Interpreter:
                 instruction_mapping[self.DIV_INSTRUCTION]()
                 
             # Tag and jump instructions
-            elif len(cur_instruction) > 0 and cur_instruction[0] == ">": # found a new tag definition
-                if len(cur_instruction) < 2:
-                    print("tags must have at least one character.")
-                    exit(-1)
-                self.tags[cur_instruction[1:]] = self.ip  # stores the position of the tag
+            elif len(cur_instruction) > 0 and cur_instruction[0] == ">":
+                pass # tags are already registered in stsc_parcer.py
             elif cur_instruction in self.tags:
                 self.stack.append(cur_instruction)
             elif cur_instruction == self.JUMP_INSTRUCTION:
