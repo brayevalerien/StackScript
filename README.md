@@ -156,8 +156,6 @@ Keep in mind that StackScript is made to be extremely basic and limited, so I mi
 
 ### Things you could help with
 Here are some ideas of what you could work on if you want to contribute to the project but don't know where to start. They should be fairly simple to do but would make great contributions:
-- move the tag registration to the parser, allowing for forward jumps
-- add `jumpLessThan` and `jumpGreaterThan` instructions
 - create a C program to add a better way to run the interpreter. At the moment running a stsc program is a by awkward: `python ./src/stackscript.py path_to_program`. It would be easier if an exe file handled the call to python, so the user could simply run `./stackscript path_to_program`
 - either prove that StackScript is Turing complete or that it is not. Even if it is not Turing complete, it would be great to know.
 - improve the documentation by adding better examples, correcting grammar mistakes/typos and make the explanations clearer.

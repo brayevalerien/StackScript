@@ -17,5 +17,6 @@ if __name__ == "__main__":
         
     code_parser = Parser()
     code_parser.parse(raw_code)
+    code_parser.register_tags()
     
     Interpreter(code_parser).run()
