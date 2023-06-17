@@ -10,3 +10,12 @@ class Parser:
             tokens = line.strip().split()
             self.tokens.extend(tokens)
         return self.tokens
+    
+    def register_tags(self) -> dict:
+        if self.tokens == None:
+            raise RuntimeError("Cannot register tag before parsing.")
+        self.tags = {}
+        for ip, token in enumerate(self.tokens):
+            if token[0] == ">": # found a tag
+                self.tags[token[1:]] = ip
+        return self.tags
