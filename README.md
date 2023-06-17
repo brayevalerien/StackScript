@@ -59,6 +59,8 @@ Tags are a used by jump instructions. A jump instruction (conditional or not) re
 - `jump`: unconditionally jumps to the tag that is currently on top of the stack
 - `jumpZero`: jumps to the tag that is currently on top of the stack iff the second-to-top element is 0.
 - `jumpNotZero`: jumps to the tag that is currently on top of the stack iff the second-to-top element is not 0.
+- `jumpPos`: jumps to the tag that is currently on top of the stack iff the second-to-top element is greater than or equal to 0.
+- `jumpNeg`: jumps to the tag that is currently on top of the stack iff the second-to-top element is strictly less than 0.
 
 ### Stack manipulation instructions
 - there is no push instruction. Simply write the number or the tag you want to push on the stack (e.g. `1 2 tag show` will output `[1.0, 2.0, 'tag']`)

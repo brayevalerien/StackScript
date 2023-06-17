@@ -17,6 +17,8 @@ class Interpreter:
     JUMP_INSTRUCTION = "jump"
     JUMPZERO_INSTRUCTION = "jumpZero"
     JUMPNOTZERO_INSTRUCTION = "jumpNotZero"
+    JUMPPOS_INSTRUCTION = "jumpPos"
+    JUMPNEG_INSTRUCTION = "jumpNeg"
     # stack manipulation instructions
     DUP_INSTRUCTION = "dup"    # (a -- a a)
     SWAP_INSTRUCTION = "swap"  # (a b -- b a)
@@ -134,6 +136,28 @@ class Interpreter:
             print("A previously defined tag must be on top of the stack when a jumpNotZero instruction is executed. Current top of the stack: " + str(tag))
             exit(-1)
     
+    def stsc_jump_pos(self, tag):
+        if len(self.stack) < 1:
+            print("Cannot jump, the stack has less than one element.")
+            exit(-1)
+        if tag in self.tags:
+            if self.stack[-1] >= 0:
+                self.ip = self.tags[tag]
+        else:
+            print("A previously defined tag must be on top of the stack when a jumpPos instruction is executed. Current top of the stack: " + str(tag))
+            exit(-1)
+    
+    def stsc_jump_neg(self, tag):
+        if len(self.stack) < 1:
+            print("Cannot jump, the stack has less than one element.")
+            exit(-1)
+        if tag in self.tags:
+            if self.stack[-1] < 0:
+                self.ip = self.tags[tag]
+        else:
+            print("A previously defined tag must be on top of the stack when a jumpNeg instruction is executed. Current top of the stack: " + str(tag))
+            exit(-1)
+    
     def stsc_dup(self):
         if len(self.stack) < 1:
             print("Cannot dup, the stack has less than one element.")
@@ -189,6 +213,8 @@ class Interpreter:
             self.JUMP_INSTRUCTION: self.stsc_jump,
             self.JUMPZERO_INSTRUCTION: self.stsc_jump_zero,
             self.JUMPNOTZERO_INSTRUCTION: self.stsc_jump_not_zero,
+            self.JUMPPOS_INSTRUCTION: self.stsc_jump_pos,
+            self.JUMPNEG_INSTRUCTION: self.stsc_jump_neg,
             # stack manipulation instructions
             self.DUP_INSTRUCTION: self.stsc_dup,
             self.SWAP_INSTRUCTION: self.stsc_swap,
@@ -247,6 +273,12 @@ class Interpreter:
             elif cur_instruction == self.JUMPNOTZERO_INSTRUCTION:
                 stack_top = self.stack.pop()
                 instruction_mapping[self.JUMPNOTZERO_INSTRUCTION](stack_top)
+            elif cur_instruction == self.JUMPPOS_INSTRUCTION:
+                stack_top = self.stack.pop()
+                instruction_mapping[self.JUMPPOS_INSTRUCTION](stack_top)
+            elif cur_instruction == self.JUMPNEG_INSTRUCTION:
+                stack_top = self.stack.pop()
+                instruction_mapping[self.JUMPNEG_INSTRUCTION](stack_top)
 
             # stack operation instructions
             elif cur_instruction == self.DUP_INSTRUCTION:
