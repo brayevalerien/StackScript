@@ -23,12 +23,22 @@ This document is divided in multiple sections:
 ## How to install and run StackScript programs
 Note that python is required to run StackScript programs. 
 
-Clone this repository locally using the command: <br>
-`git clone https://github.com/brayevalerien/StackScript`
+Clone this repository locally using:
+```bash
+git clone https://github.com/brayevalerien/StackScript
+```
 
-Add the path of the directory to your `PYTHONPATH` environnement variable. You can `cd` into the directory you downloaded and run `export PYTHONPATH=$PYTHONPATH:${pwd}`. Add this command to your `~/.bashrc` file to make this change permanent.
+Add the path of the directory to your `PYTHONPATH` environnement variable. You can `cd` into the directory you downloaded and run:
+```bash
+export PYTHONPATH=$PYTHONPATH:${pwd}
+```
+Add this command to your `~/.bashrc` file to make this change permanent.
 
-To run a StackScript program, simply run the `stackscript` executable file. For instance, if you want the run the [factorial.stsc example](./examples/factorial.stsc): `./stackscript ./examples/factorial.stsc`. Note that this executable calls python to run the [StacScript interpreter](./src/stackscript.py) written in python.
+To run a StackScript program, simply run the `stackscript` executable file. For instance, if you want the run the [factorial.stsc example](./examples/factorial.stsc):
+```bash
+./stackscript ./examples/factorial.stsc
+```
+Note that this executable calls python to run the [StacScript interpreter](./src/stackscript.py) written in python.
 
 If you need/want to build the executable by yourself, do:
 ```bash
