@@ -47,7 +47,7 @@ class Interpreter:
             self.stack.append(float(input("> ")))
         except:
             print("Invalid input. Please enter only numeric values.")
-            exit(-1)
+            exit(1)
     
     def stsc_show(self):
         print(str(self.stack))
@@ -55,56 +55,56 @@ class Interpreter:
     def stsc_add(self):
         if len(self.stack) < 2:
             print("Cannot add, the stack has less than two elements.")
-            exit(-1)
+            exit(1)
         a, b = self.stack.pop(), self.stack.pop()
         if isinstance(a, str):
             print("Cannot add " + a + " (tag) and " + b + ".")
-            exit(-1)
+            exit(1)
         if isinstance(b, str):
             print("Cannot add " + a + " and " + b + " (tag).")
-            exit(-1)
+            exit(1)
         self.stack.append(a + b)
     
     def stsc_sub(self):
         if len(self.stack) < 2:
             print("Cannot add, the stack has less than two elements.")
-            exit(-1)
+            exit(1)
         a, b = self.stack.pop(), self.stack.pop()
         if isinstance(a, str):
             print("Cannot sub " + a + " (tag) and " + b + ".")
-            exit(-1)
+            exit(1)
         if isinstance(b, str):
             print("Cannot sub " + a + " and " + b + " (tag).")
-            exit(-1)
+            exit(1)
         self.stack.append(a - b)
     
     def stsc_mul(self):
         if len(self.stack) < 2:
             print("Cannot mul, the stack has less than two elements.")
-            exit(-1)
+            exit(1)
         a, b = self.stack.pop(), self.stack.pop()
         if isinstance(a, str):
             print("Cannot mul " + a + " (tag) and " + b + ".")
-            exit(-1)
+            exit(1)
         if isinstance(b, str):
             print("Cannot mul " + a + " and " + b + " (tag).")
-            exit(-1)
+            exit(1)
         self.stack.append(a * b)
     
     def stsc_div(self):
         if len(self.stack) < 2:
             print("Cannot div, the stack has less than two elements.")
-            exit(-1)
+            exit(1)
         a, b = self.stack.pop(), self.stack.pop()
         if isinstance(a, str):
             print("Cannot div " + a + " (tag) and " + b + ".")
-            exit(-1)
+            exit(1)
         if isinstance(b, str):
             print("Cannot div " + a + " and " + b + " (tag).")
-            exit(-1)
+            exit(1)
         if b == 0:
             print("Cannot div by 0.")
-            exit(-1)
+            exit(1)
         self.stack.append(a / b)
     
     def stsc_jump(self, tag):
@@ -112,62 +112,62 @@ class Interpreter:
             self.ip = self.tags[tag]
         else:
             print("A previously defined tag must be on top of the stack when a jump instruction is executed. Current top of the stack: " + str(tag))
-            exit(-1)
+            exit(1)
     
     def stsc_jump_zero(self, tag):
         if len(self.stack) < 1:
             print("Cannot jump, the stack has less than one element.")
-            exit(-1)
+            exit(1)
         if tag in self.tags:
             if self.stack[-1] == 0:
                 self.ip = self.tags[tag]
         else:
             print("A previously defined tag must be on top of the stack when a jumpZero instruction is executed. Current top of the stack: " + str(tag))
-            exit(-1)
+            exit(1)
     
     def stsc_jump_not_zero(self, tag):
         if len(self.stack) < 1:
             print("Cannot jump, the stack has less than one element.")
-            exit(-1)
+            exit(1)
         if tag in self.tags:
             if self.stack[-1] != 0:
                 self.ip = self.tags[tag]
         else:
             print("A previously defined tag must be on top of the stack when a jumpNotZero instruction is executed. Current top of the stack: " + str(tag))
-            exit(-1)
+            exit(1)
     
     def stsc_jump_pos(self, tag):
         if len(self.stack) < 1:
             print("Cannot jump, the stack has less than one element.")
-            exit(-1)
+            exit(1)
         if tag in self.tags:
             if self.stack[-1] >= 0:
                 self.ip = self.tags[tag]
         else:
             print("A previously defined tag must be on top of the stack when a jumpPos instruction is executed. Current top of the stack: " + str(tag))
-            exit(-1)
+            exit(1)
     
     def stsc_jump_neg(self, tag):
         if len(self.stack) < 1:
             print("Cannot jump, the stack has less than one element.")
-            exit(-1)
+            exit(1)
         if tag in self.tags:
             if self.stack[-1] < 0:
                 self.ip = self.tags[tag]
         else:
             print("A previously defined tag must be on top of the stack when a jumpNeg instruction is executed. Current top of the stack: " + str(tag))
-            exit(-1)
+            exit(1)
     
     def stsc_dup(self):
         if len(self.stack) < 1:
             print("Cannot dup, the stack has less than one element.")
-            exit(-1)
+            exit(1)
         self.stack.append(self.stack[-1])            
     
     def stsc_swap(self):
         if len(self.stack) < 2:
             print("Cannot swap, the stack has less than two elements.")
-            exit(-1)
+            exit(1)
         a, b = self.stack.pop(), self.stack.pop()
         self.stack.append(a)
         self.stack.append(b)
@@ -175,19 +175,19 @@ class Interpreter:
     def stsc_drop(self):
         if len(self.stack) < 1:
             print("Cannot drop, the stack has less than one element.")
-            exit(-1)
+            exit(1)
         self.stack.pop()            
 
     def stsc_reach(self):
         if len(self.stack) < 2:
             print("Cannot reach, the stack has less than two elements.")
-            exit(-1)
+            exit(1)
         self.stack.append(self.stack[-2])    
 
     def stsc_cycle(self):
         if len(self.stack) < 3:
             print("Cannot cycle, the stack has less than three elements.")
-            exit(-1)
+            exit(1)
         c, b, a = self.stack.pop(), self.stack.pop(), self.stack.pop()
         self.stack.append(b)
         self.stack.append(c)
@@ -235,7 +235,7 @@ class Interpreter:
             elif cur_instruction == self.PRINT_INSTRUCTION:
                 if len(self.stack) < 1:
                     print("Cannot print, the stack is empty.")
-                    exit(-1)
+                    exit(1)
                 if isinstance(self.stack[-1], float):
                     msg = str(self.stack[-1])
                 else:
@@ -294,6 +294,6 @@ class Interpreter:
             # Unrecognized instruction
             else:
                 print("Unrecognized instruction: " + cur_instruction)
-                exit(-1)
+                exit(1)
                 
             self.ip += 1

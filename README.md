@@ -21,15 +21,20 @@ This document is divided in multiple sections:
     2. Things you could help with
 
 ## How to install and run StackScript programs
+Note that python is required to run StackScript programs. 
+
 Clone this repository locally using the command: <br>
 `git clone https://github.com/brayevalerien/StackScript`
 
-Add the path of the directory to your `PYTHONPATH` environnement variable. You can `cd` into the directory you downloaded and run `export PYTHONPATH=$PYTHONPATH:${pwd}`.
+Add the path of the directory to your `PYTHONPATH` environnement variable. You can `cd` into the directory you downloaded and run `export PYTHONPATH=$PYTHONPATH:${pwd}`. Add this command to your `~/.bashrc` file to make this change permanent.
 
-Once you have local version installed, run the [./src/stackscript.py](./src/stackscript.py) python script and pass the program file path in argument. For instance, if you want to run the [Fibonacci example](./examples/fibonacci.stsc), run the command:<br>
-`python ./src/stackscript.py ./examples/fibonacci.stsc`
+To run a StackScript program, simply run the `stackscript` executable file. For instance, if you want the run the [factorial.stsc example](./examples/factorial.stsc): `./stackscript ./examples/factorial.stsc`. Note that this executable calls python to run the [StacScript interpreter](./src/stackscript.py) written in python.
 
-Note that python is required to run StackScript programs. 
+If you need/want to build the executable by yourself, do:
+```bash
+make clean
+make
+```
 
 ## Core concepts
 StackScript relies heavily on the concept of a stack. A stack is a data structure that is similar to a list, as it stores elements at memory addresses. However, a stack differs from a list in that it only allows the user to interact with the top element. This means that to operate on an element at the bottom of the stack, the user must first remove (pop) all elements above it. Similarly, elements can only be added to the top of the stack through a process called pushing.<br>
@@ -156,6 +161,6 @@ Keep in mind that StackScript is made to be extremely basic and limited, so I mi
 
 ### Things you could help with
 Here are some ideas of what you could work on if you want to contribute to the project but don't know where to start. They should be fairly simple to do but would make great contributions:
-- create a C program to add a better way to run the interpreter. At the moment running a stsc program is a by awkward: `python ./src/stackscript.py path_to_program`. It would be easier if an exe file handled the call to python, so the user could simply run `./stackscript path_to_program`
+- think about instructions that could improve the language and add them. Make sure they are necessary or very usefull.
 - either prove that StackScript is Turing complete or that it is not. Even if it is not Turing complete, it would be great to know.
 - improve the documentation by adding better examples, correcting grammar mistakes/typos and make the explanations clearer.
