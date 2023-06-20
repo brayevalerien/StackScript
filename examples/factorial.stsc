@@ -1,0 +1,22 @@
+// computes the factorial of any number that the user inputs.
+// this particular program demonstrates a convenient way to define 'functions'.
+
+// the program starts at main. Note that main coud be at the top of the file and there would be no need to jump.
+main jump
+
+>factorial // computes the factorial of the value on top of the stack.
+    dup // creates a loop counter
+    >loop -1 add
+        break jumpZero // if the counter has reached 0
+        dup cycle
+        mul
+        swap
+    loop jump
+    >break
+    drop // removes the counter (=0) from the top of the stack.
+    factorialEnd jump // go back to the main 'function'
+
+>main
+    uInput
+    factorial jump >factorialEnd
+    print
