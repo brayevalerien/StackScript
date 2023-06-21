@@ -67,6 +67,8 @@ In this section, we will note a the second-to-top element and b the top element 
 - `sub`: pops a and b and pushes b-a
 - `mul`: pops a and b and pushes a*b
 - `div`: pops a and b and pushes b/a
+- `euc`: pops a and b and pushes b//a (the result of the euclidean division)
+- `div`: pops a and b and pushes b%a (the remainder of the euclidean division)
 
 ### Jump instructions
 Tags are a used by jump instructions. A jump instruction (conditional or not) requires a registered tag to be on top of the stack when it is executed, and will jump to the position in the source code where the tag was registered. Note that jump instructions pop the tag that are on top of the stack when executed.

@@ -2,3 +2,5 @@
 27 42 sub print // 15
 27 42 mul print // 1134
 27 42 div print // 1.5555555555555556
+27 42 euc print // 1
+27 42 mod print // 15

@@ -13,6 +13,8 @@ class Interpreter:
     SUB_INSTRUCTION = "sub"
     MUL_INSTRUCTION = "mul"
     DIV_INSTRUCTION = "div"
+    EUC_INSTRUCTION = "euc"
+    MOD_INSTRUCTION = "mod"
     # jump instructions
     JUMP_INSTRUCTION = "jump"
     JUMPZERO_INSTRUCTION = "jumpZero"
@@ -106,6 +108,38 @@ class Interpreter:
             print("Cannot div by 0.")
             exit(1)
         self.stack.append(a / b)
+    
+    def stsc_euc(self):
+        if len(self.stack) < 2:
+            print("Cannot euc, the stack has less than two elements.")
+            exit(1)
+        a, b = self.stack.pop(), self.stack.pop()
+        if isinstance(a, str):
+            print("Cannot euc " + a + " (tag) and " + b + ".")
+            exit(1)
+        if isinstance(b, str):
+            print("Cannot euc " + a + " and " + b + " (tag).")
+            exit(1)
+        if b == 0:
+            print("Cannot euc by 0.")
+            exit(1)
+        self.stack.append(a // b)
+    
+    def stsc_mod(self):
+        if len(self.stack) < 2:
+            print("Cannot mod, the stack has less than two elements.")
+            exit(1)
+        a, b = self.stack.pop(), self.stack.pop()
+        if isinstance(a, str):
+            print("Cannot mod " + a + " (tag) and " + b + ".")
+            exit(1)
+        if isinstance(b, str):
+            print("Cannot mod " + a + " and " + b + " (tag).")
+            exit(1)
+        if b == 0:
+            print("Cannot mod by 0.")
+            exit(1)
+        self.stack.append(a % b)
     
     def stsc_jump(self, tag):
         if tag in self.tags:
@@ -209,6 +243,8 @@ class Interpreter:
             self.SUB_INSTRUCTION: self.stsc_sub,
             self.MUL_INSTRUCTION: self.stsc_mul,
             self.DIV_INSTRUCTION: self.stsc_div,
+            self.EUC_INSTRUCTION: self.stsc_euc,
+            self.MOD_INSTRUCTION: self.stsc_mod,
             # jump instructions
             self.JUMP_INSTRUCTION: self.stsc_jump,
             self.JUMPZERO_INSTRUCTION: self.stsc_jump_zero,
@@ -255,6 +291,10 @@ class Interpreter:
                 instruction_mapping[self.MUL_INSTRUCTION]()
             elif cur_instruction == self.DIV_INSTRUCTION:
                 instruction_mapping[self.DIV_INSTRUCTION]()
+            elif cur_instruction == self.EUC_INSTRUCTION:
+                instruction_mapping[self.EUC_INSTRUCTION]()
+            elif cur_instruction == self.MOD_INSTRUCTION:
+                instruction_mapping[self.MOD_INSTRUCTION]()
                 
             # Tag and jump instructions
             elif len(cur_instruction) > 0 and cur_instruction[0] == ">":
