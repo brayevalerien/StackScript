@@ -98,6 +98,8 @@ This simple program demonstrates the use of the stack to compute simple math exp
 27 42 sub print drop
 27 42 mul print drop
 27 42 div print drop
+27 42 euc print drop
+27 42 mod print drop
 ```
 Each line starts by pushing the numbers 27 and 42 on top of the stack. Then it uses one of the four arithmetic instruction to add, substract, multiply and divide the numbers that were added to the stack, then prints the top of the stack (the result of the math operation) and finally dops the top element (cleaning the stack). The expected output is:
 ```c
@@ -105,6 +107,8 @@ Each line starts by pushing the numbers 27 and 42 on top of the stack. Then it u
 15.0               // 42-27
 1134.0             // 42*27
 1.5555555555555556 // 42/27
+1                  // 42//27
+15                 // 42%27
 ```
 
 ### [loop.stsc](./examples/loop.stsc)
